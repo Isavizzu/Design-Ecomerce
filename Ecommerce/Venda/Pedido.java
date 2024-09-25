@@ -16,7 +16,7 @@ public class Pedido {
 
 	private double valorTotal;
 
-	private Collection<Produto> produto;
+	private ArrayList<Produto> produto;
 
 	private Entrega entrega;
 
@@ -37,5 +37,10 @@ public class Pedido {
 
 	public Entrega getEntrega() {
 		return entrega;
+	}
+
+
+	public ArrayList<Produto> getProdutos() {
+		return produtos;
 	}
 }

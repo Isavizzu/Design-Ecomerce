@@ -8,6 +8,8 @@ import Entrega.Endereco;
 import Singleton.Carrinho;
 import Singleton.Favorito;
 
+import java.util.ArrayList;
+
 public class FacadeCliente {
 
 	private Cliente cliente;
@@ -32,23 +34,28 @@ public class FacadeCliente {
 	}
 
 
-	public void removeProdutoCarrinho() {
-		cliente.getCarrinho().removeProduto(new Produto("Produto A", 10, 29.99));
+	public void removeProdutoCarrinho(Produto produto) {
+		cliente.getCarrinho().removeProduto(produto);
 	}
 
 
-	public void addProdutoAoCarrinho() {
-		cliente.getCarrinho().addProduto(new Produto("Produto A", 10, 29.99));
+	public void addProdutoAoCarrinho(Produto produto) {
+		if (produto.getQuantidade() == 0) {
+			produto.adicionarObservador(cliente);
+			System.out.println("Produto não disponível no estoque!");
+			return;
+		}
+		cliente.getCarrinho().addProduto(produto);
 	}
 
 
-	public void removeProdutoFavorito() {
-		cliente.getFavorito().removeProduto(new Produto("Produto A", 10, 29.99));
+	public void removeProdutoFavorito(Produto produto) {
+		cliente.getFavorito().removeProduto(produto);
 	}
 
 
-	public void addProdutoAoFavorito() {
-		cliente.getFavorito().addProduto(new Produto("Produto A", 10, 29.99));
+	public void addProdutoAoFavorito(Produto produto) {
+		cliente.getFavorito().addProduto(produto);
 	}
 
 

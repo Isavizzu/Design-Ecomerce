@@ -14,7 +14,7 @@ import Venda.Produto;
 import Entrega.Entrega;
 
 
-public class Cliente {
+public class Cliente implements Observer{
 
 	private String nome;
 
@@ -66,6 +66,10 @@ public class Cliente {
 
 	public Pedido fazerPedido(Cliente cliente) {
 		ArrayList<Produto> produtos = carrinho.getProdutos();
+		for (int i = 0; i < produtos.size(); i++) {
+			produtos.get(i).atualizarEstoque(produtos.get(i).getQuantidade() - 1);
+		}
+
 		Pagamento pagamento = new Pagamento();
 		Transportadora transportadora = new Transportadora("Transportadora XYZ", "12.345.678/0001-90");
 		Entrega entrega = new Entrega("Em trânsito", transportadora);
@@ -84,6 +88,11 @@ public class Cliente {
 		for (Pedido p:pedidos) {
 			if (p.getValorTotal() == pedido) {
 				pedidos.remove(p);
+				ArrayList<Produto> produtos = p.getProdutos();
+				for (int i = 0; i < produtos.size(); i++) {
+					produtos.get(i).atualizarEstoque(produtos.get(i).getQuantidade() + 1);
+				}
+
 				System.out.println("Pedido de R$" + pedido + " cancelado com sucesso!");
 				ped = p;
 				break;
@@ -128,6 +137,11 @@ public class Cliente {
 				System.out.println("Dado inválido!");
 			}
 		}
+	}
+
+
+	public void atualizar (String mensagem) {
+		System.out.println("Notificação para o cliente " + this.nome + ": " + mensagem);
 	}
 
 }

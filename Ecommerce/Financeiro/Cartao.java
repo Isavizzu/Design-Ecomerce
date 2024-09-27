@@ -1,15 +1,20 @@
 package Financeiro;
 
-public class Cartao extends Pagamento {
+public abstract class Cartao implements InterfacePagamento {
+	protected int numero;
+	protected String nomeTitular;
+	protected String dataValidade;
+	protected int cvv;
+	protected String bandeira;
 
-	private int numero;
+	public Cartao(int numero, String nomeTitular, String dataValidade, int cvv, String bandeira) {
+		this.numero = numero;
+		this.nomeTitular = nomeTitular;
+		this.dataValidade = dataValidade;
+		this.cvv = cvv;
+		this.bandeira = bandeira;
+	}
 
-	private String nomeTitular;
-
-	private String dataValidade;
-
-	private int cvv;
-
-	private String bandeira;
-
+	@Override
+	public abstract void processarPagamento();
 }

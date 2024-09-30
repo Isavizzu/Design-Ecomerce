@@ -13,4 +13,8 @@ public class Transportadora {
 		this.nome = nome;
 		this.cnpj = cnpj;
 	}
+
+	public void verificarTransportadora(){
+		System.out.println("Essa é a transportadora");
+	}
 }

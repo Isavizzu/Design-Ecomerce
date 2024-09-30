@@ -25,4 +25,12 @@ public class Endereco {
 		this.rua = rua;
 		this.numero = numero;
 	}
+
+	public void obterEndereco(){
+		System.out.println("Este é o endereço");
+	}
+
+	public void atualizarEndereco(){
+		System.out.println("Endereço atualizado");
+	}
 }

@@ -20,4 +20,7 @@ public class Entrega {
 		this.status = status;
 	}
 
+	public void verificarStatus(){
+		System.out.println("O status da entrega é esse");
+	}
 }

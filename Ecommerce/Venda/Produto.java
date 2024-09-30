@@ -29,6 +29,9 @@ public class Produto {
 		this.preco = preco;
 	}
 
+	public void cadastrarProduto(){
+		System.out.println("O produto foi cadastrado");
+	}
 
 	public int getQuantidade() {
 		return quantidade;

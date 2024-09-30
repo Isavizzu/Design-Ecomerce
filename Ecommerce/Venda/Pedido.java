@@ -29,18 +29,9 @@ public class Pedido {
 		this.valorTotal = valorTotal;
 	}
 
-	public void finalizarPedido(){
-		System.out.println("O seu pedido foi feito, aguarde a confirmação");
+	public void verificarPagamento(){
+		System.out.println(pagamento.getStatus());
 	}
-
-	public void calcularTotal(){
-		System.out.println("Calculado");
-	}
-
-	public void cancelarPedido(){
-		System.out.println("Seu pedido foi cancelado");
-	}
-
 
 
 	public double getValorTotal() {

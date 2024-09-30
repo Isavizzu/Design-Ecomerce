@@ -15,6 +15,6 @@ public class Transportadora {
 	}
 
 	public void verificarTransportadora(){
-		System.out.println("Essa é a transportadora");
+		System.out.println("Essa é a transportador: " + nome + "CNPJ: " + cnpj);
 	}
 }

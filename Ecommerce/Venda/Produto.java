@@ -1,49 +1,44 @@
 package Venda;
-import Entidade.Observer;
+
 import java.util.ArrayList;
+import Entidade.Observer;
 
 public class Produto {
-
 	private String nome;
-
 	private int quantidade;
-
 	private double preco;
-
-	private ArrayList<Observer> observadores = new ArrayList<>();
-
-
-	public double getPreco() {
-		return preco;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void mudarPreco(double preco){
-		this.preco = preco;
-	}
+	private ArrayList<Observer> observadores;
 
 
 	public Produto(String nome, int quantidade, double preco) {
 		this.nome = nome;
 		this.quantidade = quantidade;
 		this.preco = preco;
+		this.observadores = new ArrayList<>();
 	}
 
+	public String getNome() {
+		return nome;
+	}
 
 	public int getQuantidade() {
 		return quantidade;
 	}
 
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
 
 	public void adicionarObservador(Observer observador) {
 		observadores.add(observador);
-	}
-
-	public void removerObservador(Observer observador) {
-		observadores.remove(observador);
 	}
 
 	public void notificarObservadores(String mensagem) {
@@ -52,8 +47,15 @@ public class Produto {
 		}
 	}
 
+	public void atualizarEstoque(int quantidade) {
+		this.quantidade += quantidade;
+		if (this.quantidade > 0) {
+			notificarObservadores("O produto " + nome + " está disponível novamente!");
+		}
+	}
 
-	public void atualizarEstoque(int quant) {
-		this.quantidade = quant;
+	@Override
+	public String toString() {
+		return "Produto: " + nome + ", Quantidade: " + quantidade + ", Preço: R$" + preco;
 	}
 }

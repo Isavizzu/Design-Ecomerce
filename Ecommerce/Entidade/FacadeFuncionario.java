@@ -51,33 +51,12 @@ public class FacadeFuncionario {
 		carrinho.removeProduto(produto);
 	}
 
-	public void addProdutoAoFavorito(Produto produto) {
-		Favorito favorito = Favorito.getInstance();
-		favorito.addProduto(produto);
-		System.out.println("Produto adicionado aos favoritos.");
-	}
-
-	public void removeProdutoFavorito(Produto produto) {
-		Favorito favorito = Favorito.getInstance();
-		favorito.removeProduto(produto);
-	}
-
 	public void atualizarEstoque(int quant, Produto produto) {
 		if (produto.getQuantidade() == 0 && quant > 0) {
 			produto.notificarObservadores("O produto: " + produto.getNome() + " voltou ao Estoque!");
 		}
 		produto.atualizarEstoque(quant);
 		System.out.println("Estoque do produto " + produto.getNome() + " atualizado para " + quant);
-	}
-
-	public void visualizarCarrinho() {
-		Carrinho carrinho = Carrinho.getInstance();
-		carrinho.visualizarCarrinho();
-	}
-
-	public void visualizarFavorito() {
-		Favorito favorito = Favorito.getInstance();
-		favorito.visualizarFavorito();
 	}
 
 	public void removerFuncionario() {

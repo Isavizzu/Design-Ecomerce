@@ -35,7 +35,7 @@ public class FacadeFuncionario {
 		System.out.println("Produto " + novoProduto.getNome() + " cadastrado com sucesso.");
 	}
 
-	
+
 	public void atualizarEstoque(int quant, Produto produto) {
 		if (produto.getQuantidade() == 0 && quant > 0) {
 			produto.notificarObservadores("O produto: " + produto.getNome() + " voltou ao Estoque!");

@@ -41,6 +41,11 @@ public class Produto {
 		observadores.add(observador);
 	}
 
+	public void removerObservador(Observer observador) {
+		observadores.remove(observador);
+	}
+
+
 	public void notificarObservadores(String mensagem) {
 		for (Observer observador : observadores) {
 			observador.atualizar(mensagem);

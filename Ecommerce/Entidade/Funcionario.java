@@ -1,6 +1,6 @@
 package Entidade;
 
-public class Funcionario implements Observer {
+public class Funcionario {
 	private String nome;
 	private String cpf;
 	private String dataDeNascimento;
@@ -12,11 +12,7 @@ public class Funcionario implements Observer {
 		this.dataDeNascimento = dataDeNascimento;
 		this.cargo = cargo;
 	}
-
-	@Override
-	public void atualizar(String mensagem) {
-		System.out.println("Funcionário " + nome + ": " + mensagem);
-	}
+	
 
 	public String getNome() {
 		return nome;

@@ -128,8 +128,8 @@ public class Cliente implements Observer {
 		return ped;
 	}
 
-	public void atualizarEndereco(Endereco novoEndereco) {
-		this.endereco = novoEndereco;
+	public void atualizarEndereco() {
+		endereco.atualizarEndereco();
 		System.out.println("Endereço atualizado com sucesso!");
 	}
 

@@ -1,6 +1,6 @@
 package Financeiro;
 
-public abstract class Cartao implements InterfacePagamento {
+public abstract class Cartao implements PagamentoStrategy {
 	protected int numero;
 	protected String nomeTitular;
 	protected String dataValidade;
@@ -15,6 +15,4 @@ public abstract class Cartao implements InterfacePagamento {
 		this.bandeira = bandeira;
 	}
 
-	@Override
-	public abstract void processarPagamento();
 }

@@ -3,28 +3,24 @@ package Financeiro;
 public class Pagamento {
 	private double valor;
 	private String status;
-	private InterfacePagamento metodoPagamento;
+	private PagamentoStrategy metodoPagamento;
 
-	public Pagamento(double valor, InterfacePagamento metodoPagamento) {
+	public Pagamento(double valor, PagamentoStrategy metodoPagamento) {
 		this.valor = valor;
 		this.metodoPagamento = metodoPagamento;
 		this.status = "pendente";
 	}
 
 	public void realizarPagamento() {
-		metodoPagamento.processarPagamento();
+		metodoPagamento.processarPagamento(valor);
 		this.status = "concluído";
 	}
 
-	public double getValor() {
-		return valor;
-	}
+	public void setMetodoPagamento(PagamentoStrategy novoMetodo){ this.metodoPagamento = novoMetodo;}
 
-	public String getStatus() {
-		return status;
-	}
+	public double getValor() { return valor;}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	public String getStatus() { return status;}
+
+	public void setStatus(String status) { this.status = status;}
 }

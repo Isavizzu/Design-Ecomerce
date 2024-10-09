@@ -1,6 +1,6 @@
 package Financeiro;
 
-public class Boleto implements InterfacePagamento {
+public class Boleto implements PagamentoStrategy {
 	private int codigoBarras;
 	private String dataVencimento;
 
@@ -10,7 +10,7 @@ public class Boleto implements InterfacePagamento {
 	}
 
 	@Override
-	public void processarPagamento() {
+	public void processarPagamento(double valor) {
 		System.out.println("Processando pagamento via boleto...");
 	}
 }

@@ -84,8 +84,7 @@ public class FacadeCliente {
 
 
 	public void mudarEndereco() {
-		Endereco endereco = new Endereco("São Paulo", "São Paulo", "Padrão Baixo", "Rua Sítio", 102);
-		cliente.atualizarEndereco(endereco);
+		cliente.atualizarEndereco();
 	}
 
 

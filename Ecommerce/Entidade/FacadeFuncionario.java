@@ -15,13 +15,13 @@ public class FacadeFuncionario {
 		this.funcionario = funcionario;
 	}
 
-	public void cadastrarFuncionario(String nome, String cpf, String dataNascimento, String cargo) {
+	public void logarFuncionario(String nome, String cpf, String dataNascimento, String cargo) {
 		if (this.funcionario == null) {
 			Funcionario novoFuncionario = new Funcionario(nome, cpf, dataNascimento, cargo);
 			this.funcionario = novoFuncionario;
-			System.out.println("Funcionário " + nome + " cadastrado com sucesso!");
+			System.out.println(nome + " logado com sucesso!");
 		} else {
-			System.out.println("Funcionário já está cadastrado.");
+			System.out.println("Você já está logado.");
 		}
 	}
 
@@ -41,15 +41,7 @@ public class FacadeFuncionario {
 			produto.notificarObservadores("O produto: " + produto.getNome() + " voltou ao Estoque!");
 		}
 		produto.atualizarEstoque(quant);
-		System.out.println("Estoque do produto " + produto.getNome() + " atualizado para " + quant);
+		System.out.println("Estoque do produto " + produto.getNome() + " atualizado para " + produto.getQuantidade());
 	}
 
-	public void removerFuncionario() {
-		if (this.funcionario != null) {
-			System.out.println("Funcionário " + funcionario.getNome() + " removido.");
-			this.funcionario = null;
-		} else {
-			System.out.println("Nenhum funcionário cadastrado para remover.");
-		}
-	}
 }

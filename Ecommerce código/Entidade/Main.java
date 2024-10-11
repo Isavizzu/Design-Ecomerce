@@ -26,6 +26,8 @@ public class Main {
         produtos.add(produto2);
         produtos.add(produto3);
         produtos.add(produto4);
+        Funcionario funcionario = new Funcionario("João", "123.456.789-00", "01/01/1990", "Estoquista");
+        FacadeFuncionario facedeFuncionario = new FacadeFuncionario(funcionario);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -85,11 +87,39 @@ public class Main {
                     break;
 
                 case 2:
+                    menu: while (true) {
+                        System.out.println("Funcionalidades:");
+                        System.out.println("1-Me logar Funcionário");
+                        System.out.println("2-Cadastrar Transportadora");
+                        System.out.println("3-Cadastrar Produto");
+                        System.out.println("4-Atualizar Estoque");
+                        System.out.println("5-Sair");
+                        int opcao = scanner.nextInt();
+                        switch (opcao){
+                            case 1:
+                                facedeFuncionario.logarFuncionario("Wilson da Silva", "120.456.789-00", "01/10/1990", "Gerente");
+                                break;
+                            case 2:
+                                facedeFuncionario.cadastrarTransportadora("ViagemSegura", "Rua São Berto 56, Bairro São Francisco-Campina Grande do Sul/PR");
+                                break;
+                            case 3:
+                                facedeFuncionario.cadastrarProduto(produtos, new Produto("Blusinha", 12, 60));
+                                break;
+                            case 4:
+                                facedeFuncionario.atualizarEstoque(2, produtos.getFirst());
+                                break;
+                            case 5:
+                                break menu;
+                            default:
+                                System.out.println("Opção Inválida");
+                                break;
+                        }
+                    }
                     break;
 
                 default:
-                    System.out.println("Método de pagamento inválido!");
-                    return;
+                    System.out.println("Dado inválido!");
+                    break;
             }
 
 

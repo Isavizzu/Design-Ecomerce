@@ -28,7 +28,6 @@ public class Main {
         produtos.add(produto4);
 
         Funcionario funcionario = new Funcionario("João", "123.456.789-00", "01/01/1990", "Estoquista");
-        produto1.adicionarObservador(funcionario);
 
         FacadeCliente facadeCliente = new FacadeCliente(null);
         facadeCliente.cadastrar();

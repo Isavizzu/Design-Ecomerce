@@ -27,67 +27,64 @@ public class Main {
         produtos.add(produto3);
         produtos.add(produto4);
 
-        Funcionario funcionario = new Funcionario("João", "123.456.789-00", "01/01/1990", "Estoquista");
-
-        FacadeCliente facadeCliente = new FacadeCliente(null);
-        facadeCliente.cadastrar();
-
-        facadeCliente.addProdutoAoCarrinho(produtos.get(0));
-        facadeCliente.removeProdutoCarrinho(produtos.get(0));
-
-        facadeCliente.visualizarCarrinho();
-
-        facadeCliente.addProdutoAoFavorito(produtos.get(0));
-        facadeCliente.removeProdutoFavorito(produtos.get(0));
-
-        facadeCliente.visualizarFavorito();
-
-        facadeCliente.comprar();
-        facadeCliente.visualizarPedidos();
-
-        facadeCliente.cancelarCompra();
-        facadeCliente.visualizarPedidos();
-
-        facadeCliente.mudarEndereco();
-
         Scanner scanner = new Scanner(System.in);
-        double valorTotal = 50.00;
 
         try {
-            System.out.println("Escolha o método de pagamento:");
-            System.out.println("1 - Cartão de Crédito");
-            System.out.println("2 - Cartão de Débito");
-            System.out.println("3 - Boleto");
+            System.out.println("Bem-vindo, escolha um tipo de usuário:");
+            System.out.println("1- Cliente");
+            System.out.println("2- Funcionário");
+            
+            int escolha = scanner.nextInt();
 
-            int escolhaPagamento = scanner.nextInt();
-            Pagamento pagamento = null;
-
-            switch (escolhaPagamento) {
+            switch (escolha) {
                 case 1:
-                    int numeroCartao = 123456789;
-                    String nomeTitular = "João Silva";
-                    String dataValidade = "12/25";
-                    int cvv = 123;
-                    String bandeira = "Visa";
-                    CartaoCredito cartaoCredito = new CartaoCredito(numeroCartao, nomeTitular, dataValidade, cvv, bandeira);
-                    pagamento = new Pagamento(valorTotal, cartaoCredito);
+                    FacadeCliente fc = new FacadeCliente(null);
+                    fc.cadastrar();
+                    System.out.println("Escolha uma pessoa: ");
+                    System.out.println("1- Adicionar produto ao carrinha");
+                    System.out.println("2- Remover produto do carrinha");
+                    System.out.println("3- Adicionar produto ao favorito");
+                    System.out.println("4- Remover produto do favorito");
+                    System.out.println("5- Comprar");
+                    System.out.println("6- Cancelar compra");
+                    System.out.println("7- Mudar endereço");
+                    System.out.println("8- Visualizar pedidos");
+                    System.out.println("9- Visualizar carrinho");
+                    System.out.println("10- Visualizar favorito");
+
+                    int escolhaCliente = scanner.nextInt();
+
+                    try{
+                        switch (escolhaCliente) {
+                            case 1:
+                                fc.addProdutoAoCarrinho(produtos.get(1));
+                                break;
+
+                            case 2:
+                                fc.removeProdutoCarrinho(produtos.get(1));
+                                break;
+
+                            case 3:
+                                fc.addProdutoAoFavorito(produtos.get(0));
+                                break;
+
+                            case 4: 
+                                fc.removeProdutoFavorito(produtos.get(0));
+
+                            case 5:
+                                fc.comprar();
+                                break;
+                        
+                            default:
+                                break;
+                        }
+
+                    }catch (InputMismatchException e) {
+                        System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                    }
                     break;
 
                 case 2:
-                    int numeroCartaoDebito = 987654321;
-                    String nomeTitularDebito = "Maria Oliveira";
-                    String dataValidadeDebito = "11/24";
-                    int cvvDebito = 456;
-                    String bandeiraDebito = "MasterCard";
-                    CartaoDebito cartaoDebito = new CartaoDebito(numeroCartaoDebito, nomeTitularDebito, dataValidadeDebito, cvvDebito, bandeiraDebito);
-                    pagamento = new Pagamento(valorTotal, cartaoDebito);
-                    break;
-
-                case 3:
-                    long codigoBarras = 123456789012L;
-                    String dataVencimento = "30/12/2024";
-                    Boleto boleto = new Boleto((int) codigoBarras, dataVencimento);
-                    pagamento = new Pagamento(valorTotal, boleto);
                     break;
 
                 default:
@@ -95,9 +92,6 @@ public class Main {
                     return;
             }
 
-            if (pagamento != null) {
-                System.out.println("Pagamento realizado com sucesso! Valor: R$" + valorTotal);
-            }
 
         } catch (InputMismatchException e) {
             System.out.println("Entrada inválida. Por favor, insira um número válido.");

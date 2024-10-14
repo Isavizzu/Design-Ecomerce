@@ -32,7 +32,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            System.out.println("Bem-vindo, escolha um tipo de usuário:");
+            menu: while(true){
+                System.out.println("Bem-vindo, escolha um tipo de usuário:");
             System.out.println("1- Cliente");
             System.out.println("2- Funcionário");
             
@@ -40,52 +41,80 @@ public class Main {
 
             switch (escolha) {
                 case 1:
-                    FacadeCliente fc = new FacadeCliente(null);
-                    fc.cadastrar();
-                    System.out.println("Escolha uma pessoa: ");
-                    System.out.println("1- Adicionar produto ao carrinha");
-                    System.out.println("2- Remover produto do carrinha");
-                    System.out.println("3- Adicionar produto ao favorito");
-                    System.out.println("4- Remover produto do favorito");
-                    System.out.println("5- Comprar");
-                    System.out.println("6- Cancelar compra");
-                    System.out.println("7- Mudar endereço");
-                    System.out.println("8- Visualizar pedidos");
-                    System.out.println("9- Visualizar carrinho");
-                    System.out.println("10- Visualizar favorito");
+                    menu: while(true){
+                        FacadeCliente fc = new FacadeCliente(null);
+                        fc.cadastrar();
+                        System.out.println("Escolha uma pessoa: ");
+                        System.out.println("1- Adicionar produto ao carrinha");
+                        System.out.println("2- Remover produto do carrinha");
+                        System.out.println("3- Adicionar produto ao favorito");
+                        System.out.println("4- Remover produto do favorito");
+                        System.out.println("5- Comprar");
+                        System.out.println("6- Cancelar compra");
+                        System.out.println("7- Mudar endereço");
+                        System.out.println("8- Visualizar pedidos");
+                        System.out.println("9- Visualizar carrinho");
+                        System.out.println("10- Visualizar favorito");
+                        System.out.println("11- Sair");
 
-                    int escolhaCliente = scanner.nextInt();
+                        int escolhaCliente = scanner.nextInt();
 
-                    try{
-                        switch (escolhaCliente) {
-                            case 1:
-                                fc.addProdutoAoCarrinho(produtos.get(1));
-                                break;
+                        try{
+                            switch (escolhaCliente) {
+                                case 1:
+                                    fc.addProdutoAoCarrinho(produtos.get(1));
+                                    break;
 
-                            case 2:
-                                fc.removeProdutoCarrinho(produtos.get(1));
-                                break;
+                                case 2:
+                                    fc.removeProdutoCarrinho(produtos.get(1));
+                                    break;
 
-                            case 3:
-                                fc.addProdutoAoFavorito(produtos.get(0));
-                                break;
+                                case 3:
+                                    fc.addProdutoAoFavorito(produtos.get(0));
+                                    break;
 
-                            case 4: 
-                                fc.removeProdutoFavorito(produtos.get(0));
+                                case 4: 
+                                    fc.removeProdutoFavorito(produtos.get(0));
+                                    break;
 
-                            case 5:
-                                fc.comprar();
-                                break;
-                        
-                            default:
-                                break;
+                                case 5:
+                                    fc.comprar();
+                                    break;
+
+                                case 6:
+                                    fc.cancelarCompra();
+                                    break;
+
+                                case 7:
+                                    fc.mudarEndereco();
+                                    break;
+                                
+                                case 8:
+                                    fc.visualizarPedidos();
+                                    break;
+
+                                case 9:
+                                    fc.visualizarCarrinho();
+                                    break;
+
+                                case 10:
+                                    fc.visualizarFavorito();
+                                    break;
+
+                                case 11:
+                                    break menu;
+                            
+                                default:
+                                    break;
+                            }
+
+                        }catch (InputMismatchException e) {
+                            System.out.println("Entrada inválida. Por favor, insira um número válido.");
                         }
+                        break;
 
-                    }catch (InputMismatchException e) {
-                        System.out.println("Entrada inválida. Por favor, insira um número válido.");
-                    }
-                    break;
 
+                        }
                 case 2:
                     menu: while (true) {
                         System.out.println("Funcionalidades:");
@@ -121,8 +150,7 @@ public class Main {
                     System.out.println("Dado inválido!");
                     break;
             }
-
-
+        }
         } catch (InputMismatchException e) {
             System.out.println("Entrada inválida. Por favor, insira um número válido.");
         } finally {

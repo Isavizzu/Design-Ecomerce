@@ -41,7 +41,7 @@ public class Main {
 
             switch (escolha) {
                 case 1:
-                    menu: while(true){
+                    menu1: while(true){
                         FacadeCliente fc = new FacadeCliente(null);
                         fc.cadastrar();
                         System.out.println("Escolha uma pessoa: ");
@@ -112,11 +112,9 @@ public class Main {
                             System.out.println("Entrada inválida. Por favor, insira um número válido.");
                         }
                         break;
-
-
                         }
                 case 2:
-                    menu: while (true) {
+                    menu2: while (true) {
                         System.out.println("Funcionalidades:");
                         System.out.println("1-Me logar Funcionário");
                         System.out.println("2-Cadastrar Transportadora");
@@ -144,8 +142,6 @@ public class Main {
                                 break;
                         }
                     }
-                    break;
-
                 default:
                     System.out.println("Dado inválido!");
                     break;

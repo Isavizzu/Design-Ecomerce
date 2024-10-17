@@ -66,6 +66,7 @@ public class Cliente implements Observer {
 
 		Pedido novoPedido = new Pedido(cliente, entrega, produtos, pagamento, valorTotal);
 		adicionarPedido(novoPedido);
+		pagamento.realizarPagamento();
 		return novoPedido;
 	}
 

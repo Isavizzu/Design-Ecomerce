@@ -102,7 +102,7 @@ public class Main {
                                     break;
 
                                 case 11:
-                                    break menu;
+                                    break menu1;
                             
                                 default:
                                     break;
